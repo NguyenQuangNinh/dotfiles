@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-"Setup line number
+" Setup line number
 set relativenumber
 set number
 
@@ -9,15 +9,19 @@ set number
 "set ttyfast
 "set mouse=a
 
-"Softtab = 4 spaces
+" Softtab = 4 spaces
 set tabstop=4		"Using tab
 set shiftwidth=4	"Using reindent (<< | >>) operator
-"set expandtab       "Convert tab into spaces
  
 set laststatus=2 	"Always show status bar
 set autoread 		"Auto reload files when they are changed outside
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
+
+" Set auto indent
+set autoindent
+set smartindent
+set copyindent
 
 set pastetoggle=<F2> "F2 before pasting to preserve indentation
 
@@ -31,14 +35,23 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+" Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tpope/vim-surround'
-Plugin 'rdnetto/YCM-Generator'
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'rking/ag.vim'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'vim-scripts/vim-auto-save'
+" Plugin 'jeaye/color_coded'
+Plugin 'mhartington/oceanic-next'
+Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+" Set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
+set encoding=utf8
 
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
@@ -55,6 +68,14 @@ let g:ctrlp_working_path_mode = 0	"Use CWD as root to search
 " Use hotkey Ctrl+P
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+" AutoSave
+let g:auto_save = 1  				" enable AutoSave on Vim startup
+let g:auto_save_no_updatetime = 1  	" do not change the 'updatetime' option
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save_silent = 1  		" do not display the auto-save notification
+" EasyMotion
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
+"let g:EasyMotion_smartcase = 1
 
 "Close NERDTree when there is no file left
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
@@ -83,12 +104,14 @@ endif
 
 "Set Color Scheme
 syntax enable
-"let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+"let g:solarized_termtrans=1
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme OceanicNext
 
-" Key mapping
+let g:airline_theme='oceanicnext'
+
+" NERDTree mapping
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :NERDTreeFind<CR>
 "open .vimrc
@@ -98,5 +121,19 @@ nnoremap <leader>sv :so ~/.vimrc<CR>	"Reload .vimrc
 nnoremap <F12> :YcmCompleter GoToDefinition<CR>
 nnoremap <F11> :YcmCompleter GoToInclude<CR>
 nnoremap <F10> :YcmCompleter GoToDeclaration<CR>
+" EasyMotion mapping
+nmap s <Plug>(easymotion-s2)
+" Ag Search text in project files
+nnoremap <leader>F :Ag <C-r><C-w><CR>
+nnoremap <leader>f :Ag ""<LEFT>
+" Switch mapping
+imap <F2> .<C-o>:Switch<CR><C-o>A
+" Delete line while in insert mode 
+inoremap <c-d> <esc>ddi
+" Navigation improve
+noremap H ^
+noremap L g_
+noremap J 5j
+noremap K 5k
 
 filetype plugin indent on    " required
