@@ -36,7 +36,9 @@ rsync --exclude ".git/" --exclude ".DS_Store" --exclude "README.md" -av ./sublim
 wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install python-software-properties python g++ make
 sudo apt-get install --yes nodejs
-npm install -g grunt-cli jshint jscs csslint yo bower http-server marked eslint
+# Update npm to latest version
+sudo npm install -g npm
+sudo npm install -g grunt-cli jshint jscs csslint yo bower http-server marked eslint
 eslint --init
 
 # Install Nginx
