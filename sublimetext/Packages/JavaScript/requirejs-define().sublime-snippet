@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+define(function(require) {
+	'use strict';
+	// imports
+	${3:var ${1:Module} = require('${2:module/path}');}
+
+	/**
+	 * ${4:[description]}
+	 *
+	 * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
+	 * @namespace ${5:${TM_FILEPATH/.*(app.*)\/.*/$1/ig}}
+	 */
+	var ${TM_FILENAME/(.*)[.](.*)/$1/g} = ${0:\{\}};
+
+	// exports
+	return ${TM_FILENAME/(.*)[.](.*)/$1/g};
+});
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>define</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+	<description>RequireJS define(fn)</description>
+</snippet>

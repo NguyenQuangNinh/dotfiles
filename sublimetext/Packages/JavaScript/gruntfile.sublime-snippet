@@ -1,0 +1,88 @@
+<snippet>
+	<content><![CDATA[/*jshint node: true*/
+module.exports = function (grunt) {
+	'use strict';
+	// show elapsed time at the end
+	require('time-grunt')(grunt);
+	// Load grunt tasks automatically
+	require('load-grunt-tasks')(grunt);
+
+	// install and turn on package below to automatically load grunt tasks listed in the initConfig
+	// require('load-grunt-tasks')(grunt);
+
+	/*  ========================================================================
+								CUSTOM TASKS
+	======================================================================== */
+
+	// stub
+
+	/*  ========================================================================
+								INIT CONFIG
+	======================================================================== */
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+
+		//common config
+		config: {
+			src: '.',
+			dist: '~dist'
+		},
+
+		watch: {
+			livereload: {
+				options: {
+					livereload: '<%= connect.options.livereload %>'
+				},
+				files: [
+					'<%= config.src %>/*.html',
+					'<%= config.src %>/css/*.css',
+					'<%= config.src %>/js/**/*.js',
+					'<%= config.src %>/img/**/*.{gif,jpeg,jpg,png,svg,webp}'
+				]
+			}
+		},
+
+		connect: {
+			options: {
+				port: 8080,
+				livereload: 35729,
+				hostname: '0.0.0.0'
+			},
+			livereload: {
+				options: {
+					open: true, //open nearest browser automatically
+					base: [
+						'<%= config.src %>'
+					]
+				}
+			}
+		}
+	});
+
+	/*  ========================================================================
+							TASK COMPOSITION (ALIASING)
+	======================================================================== */
+
+	/*******************
+	 * TESTING
+	 *******************/
+	grunt.registerTask('serve', 'Serve app to localhost for testing', function () {
+		grunt.task.run([
+			'connect',
+			'watch'
+		]);
+	});
+
+	/*******************
+	 * DEFAULT TASK
+	 *******************/
+
+	grunt.registerTask('default', ['serve']);
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>gruntfile</tabTrigger>
+	<description>Gruntfile with watch</description>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
