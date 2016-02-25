@@ -47,6 +47,15 @@ sudo npm install -g npm
 sudo npm install -g grunt-cli jshint jscs csslint yo bower http-server marked eslint
 eslint --init
 
+# Install Ruby & RVM
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -L get.rvm.io | bash -s stable
+source ~/.bash_profile
+sudo rvm install 2.2
+rvm use 2.2
+rvm --default use 2.2
+gem install rails
+
 # Install Nginx
 sudo apt-get -y install nginx
 
