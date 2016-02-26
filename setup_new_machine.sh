@@ -32,6 +32,10 @@ cd dotfiles
 rsync --exclude ".git/" --exclude ".DS_Store" --exclude "README.md" -av ./sublimetext/Packages ~/.config/sublime-text-3
 sudo chown -R $USER: ~/.config/sublime-text-3/
 
+# Install Package Manager for Sublime Text 3
+mkdir -p ~/.config/sublime-text-3/'Installed Packages'
+cd ~/.config/sublime-text-3/'Installed Packages' && { curl -O https://packagecontrol.io/Package%20Control.sublime-package ; cd -; }
+
 # Sublime Linter for ST3
 # TODO
 
@@ -56,7 +60,7 @@ if [ -f /etc/profile.d/rvm.sh ];
 then
   source /etc/profile.d/rvm.sh
 else
-  source ~/.rvm/scripts/rvm
+  bash --login
 fi
 
 rvm install 2.2
