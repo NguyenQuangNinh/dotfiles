@@ -34,7 +34,7 @@ rsync --exclude ".git/" --exclude ".DS_Store" --exclude "README.md" -av ./sublim
 # Install Package Manager for Sublime Text 3
 mkdir -p ~/.config/sublime-text-3/'Installed Packages'
 cd ~/.config/sublime-text-3/'Installed Packages' && { curl -O 'https://packagecontrol.io/Package Control.sublime-package' ; cd -; }
-sudo chown -R $USER: ~/.config/sublime-text-3/
+sudo chown -R $1: ~/.config/sublime-text-3/
 
 # Sublime Linter for ST3
 # TODO
