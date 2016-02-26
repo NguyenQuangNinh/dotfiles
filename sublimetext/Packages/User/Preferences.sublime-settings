@@ -1,5 +1,6 @@
 {
 	"ensure_newline_at_eof_on_save": true,
+	"theme": "Soda Dark 3.sublime-theme",
 	// nice monospace font from Adobe, the light variant looks
     // very pleasing on dark theme
 	// "font_face": "Source Code Pro Light",
