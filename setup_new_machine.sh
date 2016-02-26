@@ -39,7 +39,8 @@ sudo chown -R $USER: ~/.config/sublime-text-3/
 # TODO
 
 # Install NodeJS
-wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+#wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get -y install python-software-properties python g++ make
 sudo apt-get -y install --yes nodejs
 # Update npm to latest version
