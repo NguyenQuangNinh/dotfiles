@@ -30,11 +30,11 @@ cd dotfiles
 
 # Sync my Sublime Text 3 settings
 rsync --exclude ".git/" --exclude ".DS_Store" --exclude "README.md" -av ./sublimetext/Packages ~/.config/sublime-text-3
-sudo chown -R $USER: ~/.config/sublime-text-3/
 
 # Install Package Manager for Sublime Text 3
 mkdir -p ~/.config/sublime-text-3/'Installed Packages'
-cd ~/.config/sublime-text-3/'Installed Packages' && { curl -O https://packagecontrol.io/Package%20Control.sublime-package ; cd -; }
+cd ~/.config/sublime-text-3/'Installed Packages' && { curl -O 'https://packagecontrol.io/Package Control.sublime-package' ; cd -; }
+sudo chown -R $USER: ~/.config/sublime-text-3/
 
 # Sublime Linter for ST3
 # TODO
