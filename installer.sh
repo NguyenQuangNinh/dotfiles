@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Don't turn off my screen
-gsettings set org.gnome.settings-daemon.plugins.power sleep-display-ac 0
-gsettings set org.gnome.settings-daemon.plugins.power sleep-display-battery 0
-gsettings set org.gnome.desktop.session idle-delay 0
-
 # Add Sublime Text PPA (-y for unattended process)
 sudo apt-add-repository -y ppa:webupd8team/sublime-text-3
 
