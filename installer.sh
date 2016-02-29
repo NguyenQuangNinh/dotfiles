@@ -78,4 +78,9 @@ sudo apt-get -y install unity-tweak-tool
 sudo apt-get -y install ibus-unikey
 # Mannual: Add ibus-daemon to start up program
 
-# TODO: install Source Code Pro fonts via git & command line
+# Install Monaco font
+wget https://github.com/NguyenQuangNinh/dotfiles/raw/master/.fonts/MONACO.TTF
+FONT_DIR=/usr/share/fonts/truetype/custom/
+sudo mkdir -p $FONT_DIR
+mv MONACO.TTF $FONT_DIR
+sudo fc-cache -f -v
