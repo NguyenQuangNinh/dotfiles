@@ -66,6 +66,31 @@ gem install rails
 # Install Nginx
 sudo apt-get -y install nginx
 
+# Install Docker
+sudo apt-get -y install apt-transport-https ca-certificates
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get -y update
+sudo apt-get purge lxc-docker
+apt-cache policy docker-engine
+sudo apt-get -y install linux-image-extra-$(uname -r)
+sudo apt-get -y install apparmor
+sudo apt-get -y install docker-engine
+sudo service docker start
+
+# Install MongoDB
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get -y update
+sudo apt-get -y install -y mongodb-org
+echo "mongodb-org hold" | sudo dpkg --set-selections
+echo "mongodb-org-server hold" | sudo dpkg --set-selections
+echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+sudo service mongod start
+cat /var/log/mongodb/mongod.log
+
 # Install Ubuntu Tweak
 sudo apt-get -y install unity-tweak-tool
 
