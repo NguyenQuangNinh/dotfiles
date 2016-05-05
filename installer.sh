@@ -101,9 +101,10 @@ sudo make install
 # Install JDK 1.8
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 sudo apt-get install oracle-java8-installer
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections &&
 update-java-alternatives -s java-8-oracle
+sudo apt-get install oracle-java8-set-default
 
 # Install Intellij IDEA 16.1
 wget -O /tmp/intellij.tar.gz https://download.jetbrains.com/idea/ideaIU-2016.1.1.tar.gz
