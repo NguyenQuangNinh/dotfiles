@@ -91,6 +91,26 @@ echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 sudo service mongod start
 cat /var/log/mongodb/mongod.log
 
+# Update Ibus to 1.5.11
+sudo apt-get -y install libdconf-dev libnotify-dev intltool libgtk2.0-dev libgtk-3-dev libdbus-1-dev
+wget -O /tmp/ibus-1.5.11.tar.gz https://github.com/ibus/ibus/releases/download/1.5.11/ibus-1.5.11.tar.gz
+tar -xvf /tmp/ibus-1.5.11.tar.gz
+./configure --prefix=/usr --sysconfdir=/etc && make
+sudo make install
+
+# Install JDK 1.8
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections &&
+update-java-alternatives -s java-8-oracle
+
+# Install Intellij IDEA 16.1
+wget -O /tmp/intellij.tar.gz https://download.jetbrains.com/idea/ideaIU-2016.1.1.tar.gz
+tar xfz /tmp/intellij.tar.gz
+cd idea-IU-145.597.3/bin
+./idea.sh
+
 # Install Ubuntu Tweak
 sudo apt-get -y install unity-tweak-tool
 
